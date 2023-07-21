@@ -3,7 +3,7 @@ import Form from './Components/form'
 
 
 function App() {
- 
+
   return (
     <>
       <div className='flex w-full h-screen'>
