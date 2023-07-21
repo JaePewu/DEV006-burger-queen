@@ -3,13 +3,18 @@ import * as React from 'react';
 
 export default function Form(){
 return (
-    <div className='bg-white px-10 py-20 rounded-3xl border-2 w-full mx-10'>
-        <h1 className='text-5xl font-lobster'>Logo Burger queen</h1> 
+    <div className='bg-white px-10 pb-20 rounded-3xl border-2 w-full mx-10'>
+
+        <div>
+            <img src="/3.png" alt="Logo Burger Queen" className='block lg:hidden h-2/4 mx-auto'/>
+            <img src="/Burger-Queen.png" alt="Burger Queen" className='hidden lg:block'/>
+        </div>
+
         <div className='mt-10'>
             <div>
                 <label className='text-2xl font-large'>Ingrese usuario</label>
                 <input
-                    className='focus:outline-none focus:border-rose-500 w-full border-2 border-amber-500 rounded-lg p-3 mt-1'
+                    className='focus:outline-none focus:border-rose-500 w-full border-2 border-amber-500 rounded-lg p-3 mt-1 font-judson'
                     placeholder='nombre@xxx.xxx'
                     type='text'
                 />
@@ -18,7 +23,7 @@ return (
             <div className='mt-7'>
                 <label className='text-2xl font-large'>Ingrese contraseña</label>
                 <input
-                    className='focus:outline-none focus:border-rose-500 w-full border-2 border-amber-500 rounded-lg p-3 mt-1'
+                    className='focus:outline-none focus:border-rose-500 w-full border-2 border-amber-500 rounded-lg p-3 mt-1 font-judson'
                     placeholder='contraseña'
                     type='password'
                 />
