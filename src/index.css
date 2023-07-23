@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 
-
-/*:root {
-  font-family: judson;
-  background-color: rgb(206, 206, 206);
-}*/
-
-
 @layer base {
   label {
     font-family: judson;
@@ -18,6 +11,4 @@
   p {
     font-family: judson;
   }
- 
 }
-  

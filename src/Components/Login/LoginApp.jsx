@@ -2,13 +2,13 @@ import {
     Logo
 } from './Form.Login.components.jsx'
 
-function Login(){
-    return(
+function Login() {
+    return (
         <>
-        <Logo></Logo>
-        
+            <Logo></Logo>
+
         </>
     )
 }
 
-export {Login};
+export { Login };
