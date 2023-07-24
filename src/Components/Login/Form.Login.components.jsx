@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
+import LogoBQueen from '/3.png';
+import BurgerQueen from '/Burger-Queen.png';
+import SoloBurgerQ from '/logo-solo-hamburguesa.png';
 
 function Form() {
     return (
@@ -7,13 +10,13 @@ function Form() {
             <section className='bg-white px-10 pb-20 rounded-3xl border-2 w-full mx-10 drop-shadow-md'>
                 <div>
                     <img 
-                    src="/3.png" 
+                    src={LogoBQueen} 
                     alt="Logo Burger Queen" 
                     className='block lg:hidden h-2/4 mx-auto' 
                     />
 
                     <img 
-                    src="/Burger-Queen.png" 
+                    src={BurgerQueen} 
                     alt="Burger Queen" 
                     className='hidden lg:block' 
                     />
@@ -66,9 +69,9 @@ function Logo() {
                 <div className='hidden lg:flex w-1/2 h-full items-center justify-center bg-white'>
 
                     <img 
-                    src="/logo-solo-hamburguesa.png" 
+                    src={SoloBurgerQ}
                     alt="Logo Burger Queen" 
-                    className='animate-bounce w-3/4 ' 
+                    className=' animate-bounce w-3/4 ' 
                     />
                     
                 </div>
