@@ -1,5 +1,6 @@
 //import { useState } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { BrowserRouter, Routes ,Route } from "react-router-dom";
 import { Login } from './Components/Login/LoginApp'
 import { BQueen } from './Components/Wellcome/wellcomeApp'
 import { Desayuno } from './Components/Gazon/Orden.components';
@@ -8,11 +9,17 @@ function App() {
 
   return (
     <>
-      <Login></Login>
-  </>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<BQueen/>} />
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/pedidos" element={<Desayuno/>} />
+        </Routes>
+            
+    </BrowserRouter>
+    </>
   )
 }
-
 
 
 
