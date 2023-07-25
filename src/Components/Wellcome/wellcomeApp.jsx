@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 function BQueen() {
     return (
@@ -40,17 +43,34 @@ function BQueen() {
                         />
                     </div>
 
-                    <div className='flex justify-center items-center m-7'>
-                        <button
-                            type="button"
-                            className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-7xl drop-shadow-md shadow-lg w-[32rem] mt-8 bg-cyan-700 text-white h-20 rounded-full font-lobster text-center'>
-                            Entrar
-                        </button>
+                    <div>
+                        <ButtonEnter></ButtonEnter>
                     </div>
+
+
                 </div>
             </section>
         </>
     );
 }
+
+
+function ButtonEnter() {
+    return (
+        <>
+            <div className='flex justify-center items-center m-7'>
+                <Link to='/login'>
+                    <button
+                        id='btnEntrar'
+                        type="button"
+                        className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-7xl drop-shadow-md shadow-lg w-[32rem] mt-8 bg-cyan-700 text-white h-20 rounded-full font-lobster text-center'>
+                        Entrar
+                    </button>
+                </Link>
+            </div>
+        </>
+    )
+}
+
 
 export { BQueen };
