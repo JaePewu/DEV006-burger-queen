@@ -32,13 +32,14 @@ function Form() {
 
         };
 
-        try {
-            const token = await loginAPI(options, setError);
-            localStorage.setItem("token", token);
+
+        const token = await loginAPI(options, setError);
+        localStorage.setItem("token", token);
+        console.log(token, 'Estamos en el token')
+        if (token) {
             navigate("/pedidos");
-        } catch (error) {
-            console.error(error);
-            setError("Error al iniciar sesión. Por favor, verifica tus credenciales");
+
+
         }
     };
 
@@ -90,10 +91,10 @@ function Form() {
                         <button
                             className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster drop-shadow-md '
                             type='submit'
-                            disabled={!!error}
-                            >Iniciar Sesión</button>
+
+                        >Iniciar Sesión</button>
                     </div>
-                </form>                 
+                </form>
 
                 <div className='mx-auto w-3/6 items-center'>
                     <p className='text-lg mt-4 flex text-center items-center justify-center font-judson'>Si no estas registrado, avisar a administración</p>
