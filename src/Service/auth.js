@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function LoginAPI(options, setError) { 
+function loginAPI(options, setError) { 
     //El parámetro 'options' es un objeto que contiene los datos necesarios para realizar la petición POST
     //setError funcion que maneja los errores en caso de problemas en el inicio de sesión 
     let token = ''; // se crea esta variable para almacenar el token
@@ -25,4 +25,4 @@ function LoginAPI(options, setError) {
         });
 }
 
-export { LoginAPI };
+export { loginAPI };
