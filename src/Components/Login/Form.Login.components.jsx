@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { LoginAPI } from '../../Service/auth';
+import { loginAPI } from '../../Service/auth.js';
 
 import LogoBQueen from '/3.png';
 import BurgerQueen from '/Burger-Queen.png';
@@ -33,7 +33,7 @@ function Form() {
         };
 
         try {
-            const token = await LoginAPI(options, setError);
+            const token = await loginAPI(options, setError);
             localStorage.setItem("token", token);
             navigate("/pedidos");
         } catch (error) {
@@ -90,10 +90,10 @@ function Form() {
                         <button
                             className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster drop-shadow-md '
                             type='submit'
-                           // disabled={!!error}
+                            disabled={!!error}
                             >Iniciar Sesión</button>
                     </div>
-                </form>
+                </form>                 
 
                 <div className='mx-auto w-3/6 items-center'>
                     <p className='text-lg mt-4 flex text-center items-center justify-center font-judson'>Si no estas registrado, avisar a administración</p>
