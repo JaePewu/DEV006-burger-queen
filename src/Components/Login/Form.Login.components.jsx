@@ -68,6 +68,7 @@ function Form() {
                             className='focus:outline-none focus:border-rose-500 w-full border-2 text-lg border-[#F5A25D] rounded-full p-4 mt-1 h-20 font-judson drop-shadow-md'
                             placeholder='Nombre@XXX.XXX'
                             type='text'
+                            required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -79,6 +80,7 @@ function Form() {
                             className='focus:outline-none focus:border-rose-500 w-full border-2 text-lg border-[#F5A25D] rounded-full p-4 mt-1 h-20 font-judson drop-shadow-md'
                             placeholder='Contraseña'
                             type='password'
+                            required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -87,7 +89,9 @@ function Form() {
                     <div className='mt-10 flex justify-center item-center'>
                         <button
                             className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster drop-shadow-md '
-                            type='submit'>Iniciar Sesión</button>
+                            type='submit'
+                           // disabled={!!error}
+                            >Iniciar Sesión</button>
                     </div>
                 </form>
 
