@@ -1,6 +1,6 @@
 import {
     Logo
-} from './Form.Login.components'
+} from './FormComponents.jsx'
 
 function Login() {
     return (

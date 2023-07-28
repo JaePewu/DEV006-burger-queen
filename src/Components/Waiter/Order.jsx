@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ImgLogo, InfoClient, NavPrincipal } from './Order.components'
+import { ImgLogo, InfoClient, NavPrincipal } from './OrderComponents'
 
 function Orders() {
     return (

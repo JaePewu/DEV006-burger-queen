@@ -7,12 +7,7 @@ function loginAPI(options, setError) {
 
     return axios.post('http://localhost:8080/login', options.body, options)
     //Enviamos una solucitud post de inicio de sesión, donde option.body es el cuerpo y option el resto de la peticion en este caso header.
-        .then(response => { // respuesta de la llamada
-            if (!response.data) { // si response esta vacia (Data solo trae el body)
-                throw new Error('Error al iniciar sesión. Por favor, verifica tus credenciales.');
-            }
-            return response.data;
-        })
+    
         .then(data => { // si la respuesta contiene datos y son validos va a capturar el token
             token = data.accessToken; // si la peticion es exitosa el token se guarda aquí
             localStorage.setItem('token', token); // y se guarda en el almacenamiento local
@@ -21,7 +16,7 @@ function loginAPI(options, setError) {
         })
         .catch(error => {
             console.error(error);
-            setError('Error al iniciar sesión. Por favor, verifica tus credenciales');
+            setError('No hemos podido autenticar tu cuenta. Revisa tus credenciales y haz otro intento.');
         });
 }
 

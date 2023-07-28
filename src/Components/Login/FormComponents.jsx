@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { loginAPI } from '../../Service/auth.js';
 
@@ -38,8 +38,6 @@ function Form() {
         console.log(token, 'Estamos en el token')
         if (token) {
             navigate("/pedidos");
-
-
         }
     };
 
@@ -69,7 +67,7 @@ function Form() {
                             className='focus:outline-none focus:border-rose-500 w-full border-2 text-lg border-[#F5A25D] rounded-full p-4 mt-1 h-20 font-judson drop-shadow-md'
                             placeholder='Nombre@XXX.XXX'
                             type='text'
-                            required
+                            // required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -81,7 +79,7 @@ function Form() {
                             className='focus:outline-none focus:border-rose-500 w-full border-2 text-lg border-[#F5A25D] rounded-full p-4 mt-1 h-20 font-judson drop-shadow-md'
                             placeholder='Contraseña'
                             type='password'
-                            required
+                            // required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -93,6 +91,9 @@ function Form() {
                             type='submit'
 
                         >Iniciar Sesión</button>
+                    </div>
+                    <div className='mt-5 text-center font-judson font-extrabold text-rose-500 text-xl'>
+                        {error && <div>{error}</div>}
                     </div>
                 </form>
 
