@@ -2,27 +2,6 @@
 import * as React from 'react';
 import LogoBQueen from '/3.png';
 
-function Desayuno() {
-    return (
-        <>
-            <div>
-                <ImgLogo></ImgLogo>
-            </div>
-
-            <div>
-                <InfoClient></InfoClient>
-            </div>
-
-            <nav>
-                <NavPrincipal></NavPrincipal>
-            </nav>
-
-        </>
-    )
-}
-
-
-
 
 function ImgLogo() {
     return (
@@ -79,7 +58,7 @@ function NavPrincipal() {
     )
 }
 
-export { Desayuno };
+export { ImgLogo, InfoClient, NavPrincipal};
 
 
 

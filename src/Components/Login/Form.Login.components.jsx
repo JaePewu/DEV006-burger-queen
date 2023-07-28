@@ -11,7 +11,7 @@ import SoloBurgerQ from '/logo-solo-hamburguesa.png';
 function Form() {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
