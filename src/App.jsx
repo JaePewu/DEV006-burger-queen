@@ -3,7 +3,7 @@
 import { BrowserRouter, Routes ,Route } from "react-router-dom";
 import { Login } from './Components/Login/LoginApp'
 import { BQueen } from './Components/Wellcome/wellcomeApp'
-import { Desayuno } from './Components/Gazon/Orden.components';
+import { Orders } from './Components/Waiter/Order';
 
 function App() {
 
@@ -13,9 +13,8 @@ function App() {
         <Routes>
           <Route path="/" element={<BQueen/>} />
           <Route path="/login" element={<Login/>}/>
-          <Route path="/pedidos" element={<Desayuno/>} />
+          <Route path="/pedidos" element={<Orders/>} />
         </Routes>
-            
     </BrowserRouter>
     </>
   )
