@@ -35,7 +35,6 @@ function Form() {
 
         const token = await loginAPI(options, setError);
         localStorage.setItem("token", token);
-        console.log(token, 'Estamos en el token')
         if (token) {
             navigate("/pedidos");
         }
