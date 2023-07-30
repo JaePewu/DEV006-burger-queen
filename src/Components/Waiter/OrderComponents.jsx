@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LogoBQueen from '/3.png';
 
 
+
 function ImgLogo() {
     return (
         <>
@@ -45,11 +46,21 @@ function InfoClient() {
 
 function NavPrincipal() {
     const [selectedItem, setSelectedItem] = useState('desayuno'); // Estado para almacenar el ítem seleccionado
+    const [showDiv, setShowDiv] = useState(true); // Estado para controlar la visibilidad del div
 
     const handleClick = (item) => {
         setSelectedItem(item);
+        setShowDiv(true); // Mostrar el div cuando se seleccione una etiqueta
+
+        if (item === 'desayuno' || item === 'almuerzo') {
+            setShowDiv(true);
+        } else {
+            setShowDiv(false);
+        }
+    
     };
 
+    
     return (
         <>
             <nav className='flex justify-center my-4'>
@@ -84,9 +95,18 @@ function NavPrincipal() {
                     </li>
                 </ul>
             </nav>
+            {/* Mostrar el div cuando showDiv es verdadero */}
+            {showDiv && (
+                <div className='flex my-5'>
+                <div className="flex border-2 border-[#389393] bg-[#FFE1CD] w-2/5">
+            
+                </div>
+                </div>
+            )}
         </>
     );
 }
+
 
 export { ImgLogo, InfoClient, NavPrincipal };
 
