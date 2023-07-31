@@ -1,6 +1,13 @@
 import axios from "axios";
 
 function foods() {
+
+    const token = localStorage.getItem('token');
+    if(!token) {
+        throw new Error('Error al obtener el token')
+    }
+
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     return axios.get('http://localhost:8080/products')
         .then(response => {
             const data = response.data;
