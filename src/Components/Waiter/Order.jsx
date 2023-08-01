@@ -31,6 +31,7 @@ function Orders() {
 // eslint-disable-next-line react/prop-types
 function ProductsData( {selectedItem} ) {
     const [productsData, setProductsData] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         foods()
@@ -41,6 +42,10 @@ function ProductsData( {selectedItem} ) {
                 console.error(error, 'AQUI ESTA EL ERROR*');
             });
     }, []);
+
+    const handleProductClick = (price) => {
+        setTotalPrice(totalPrice + price);
+    }
 
     function FilterProducts() {
         // Filtrar productos según el valor de selectedItem
@@ -54,7 +59,9 @@ function ProductsData( {selectedItem} ) {
 
         return filteredProducts.map(product => (
             <div className='' key={product.id}>
-                <button className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
+                <button 
+                onClick={() => handleProductClick(product.price)}
+                className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
                 <p className=''>{product.name}</p>
                 <p className=''>$ {product.price}</p>
                 </button>
@@ -63,8 +70,11 @@ function ProductsData( {selectedItem} ) {
     }
 
     return (
-        <div className='lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-10'>
+        <div>
+        <aside>
             {FilterProducts()}
+        </aside>
+        <aside> Total: ${totalPrice} </aside>
         </div>
     );
 }
