@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ImgLogo, InfoClient, NavPrincipal } from './OrderComponents'
+import { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder } from './OrderComponents'
 import { useState, useEffect } from 'react';
 import { foods } from '../../Service/orders';
 
@@ -16,14 +16,19 @@ function Orders() {
                 </div>
             </header>
             <nav>
-                <NavPrincipal></NavPrincipal>
+                <NavPrincipal/>
             </nav>
+
+            <footer className='flex justify-center'>
+                <BtnSendOrder/>
+            </footer>
 
         </>
     )
 }
 
 //Preguntar por npm install prop-types para buena practica y asi espeficar el tipo de dato.
+// eslint-disable-next-line react/prop-types
 function ProductsData( {selectedItem} ) {
     const [productsData, setProductsData] = useState([]);
 
@@ -48,10 +53,10 @@ function ProductsData( {selectedItem} ) {
         }
 
         return filteredProducts.map(product => (
-            <div className='lg:p-5' key={product.id}>
-                <button>
-                <p className='xxlg:text-3xl'>{product.name}</p>
-                <p className='xxlg:text-3xl'>$ {product.price}</p>
+            <div className='' key={product.id}>
+                <button className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
+                <p className=''>{product.name}</p>
+                <p className=''>$ {product.price}</p>
                 </button>
             </div>
         ));

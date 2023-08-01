@@ -51,26 +51,18 @@ function NavPrincipal() {
 
     const handleClick = (item) => {
         setSelectedItem(item);
-        //setShowDiv(true);
-
-        // if (item === 'desayuno') {
-        //     setShowDiv(true); // Mostrar el div para "Desayuno"
-        // } else if (item === 'almuerzo') {
-        //     setShowDiv(false); // Ocultar el div para "Almuerzo"
-        // }
     };
 
     return (
         <>
-            <nav className='flex justify-center my-4'>
+            <nav className='flex justify-center my-4 h-full'>
                 <ul className='flex'>
                     <li className="mr-1">
                         <a
                             className={`bg-white inline-block rounded-t-lg py-2 px-4 text-gray-500 hover:text-black font-judson text-4xl ${selectedItem === 'desayuno' ? 'border-t-4 border-x-4 border-[#389393]' : 'border-b-4 border-b-[#389393]'
                                 }`}
                             href="#"
-                            onClick={() => handleClick('desayuno')}
-                        >
+                            onClick={() => handleClick('desayuno')}>
                             Desayuno
                         </a>
 
@@ -78,8 +70,7 @@ function NavPrincipal() {
                             className={`bg-white inline-block rounded-t-lg py-2 px-4 text-gray-500 hover:text-black font-judson ${selectedItem === 'almuerzo' ? 'border-b-white border-t-4 border-x-4 border-[#389393]' : 'border-b-4 border-b-[#389393]'
                                 } text-4xl`}
                             href="#"
-                            onClick={() => handleClick('almuerzo')}
-                        >
+                            onClick={() => handleClick('almuerzo')}>
                             Almuerzo y cena
                         </a>
 
@@ -87,8 +78,7 @@ function NavPrincipal() {
                             className={`bg-white inline-block rounded-t-lg py-2 px-4  text-gray-500 hover:text-black  font-judson ${selectedItem === 'pedido' ? 'border-b-white border-t-4 border-x-4 border-[#389393]' : 'border-b-4 border-b-[#389393]'
                                 } text-4xl`}
                             href="#"
-                            onClick={() => handleClick('pedido')}
-                        >
+                            onClick={() => handleClick('pedido')}>
                             Pedido Listos
                         </a>
                     </li>
@@ -97,7 +87,7 @@ function NavPrincipal() {
 
             {/* Mostrar el div cuando showDiv es verdadero */}
             {showDiv && (
-    <div className='flex my-5'>
+    <div className='m-auto'>
         {/* Aquí se incluye el componente ProductsData */}
         <ProductsData selectedItem={selectedItem}/>
     </div>
@@ -106,7 +96,16 @@ function NavPrincipal() {
     );
 }
 
-export { ImgLogo, InfoClient, NavPrincipal };
+function BtnSendOrder(){
+    return(
+        <div className='fixed bottom-10 w-2/3'>
+        <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster shadow-xl '
+        type='submit'>Enviar Pedido</button>
+        </div>
+    )
+}
+
+export { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder };
 
 
 
