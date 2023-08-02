@@ -77,25 +77,28 @@ function ProductsData({ selectedItem }) {
     }
 
     return (
-        <div className=''>
-            <aside>
-                {FilterProducts()}
-            </aside>
-
-            <div className='font-judson text-2xl border-2 border-rose-500 bg-[#FFE1CD] rounded-[50px] mx-5'>
-                <div >
-                    <h1 className='text-center my-2'
-                    >Resumen de pedido</h1>
+        <div className='grid grid-cols-5 w-full h-full'>
+            {/* Section con el aside */}
+            <section className='col-span-2'>
+                <div className='grid grid-cols-4 gap-2 row-span-1'>
+                    <aside className='row-span-1 col-span-2'>
+                        {FilterProducts()}
+                    </aside>
+                </div>
+            </section>
+    
+            {/* Div con el h1 y el li */}
+            <div className='col-span-3 font-judson text-2xl border-2 border-rose-500 bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col '>
+                <div className='col-span-2 row-span-2 p-2 flex-1 ' style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <h1 className='text-center my-2'>Resumen de pedido</h1>
                     {nameFood.map((product) => (
-                        <li 
-                         key={`selected_${product.selectedId}`}> {/* Usar la identificación única como clave */}
+                        <li key={`selected_${product.selectedId}`}>
+                            {/* Usar la identificación única como clave */}
                             {product.name} - ${product.price}
                         </li>
                     ))}
                 </div>
-
-                <aside className='text-center my-2'
-                > Total: ${totalPrice} </aside>
+                <aside className='text-center my-2'>Total: ${totalPrice}</aside>
             </div>
         </div>
     );
