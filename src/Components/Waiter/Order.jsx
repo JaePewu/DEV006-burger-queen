@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder } from './OrderComponents'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { foods } from '../../Service/orders';
 
 function Orders() {
@@ -33,6 +33,7 @@ function ProductsData({ selectedItem }) {
     const [productsData, setProductsData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [nameFood, setNameFood] = useState([]);
+    let itemRef = useRef(0);
 
     useEffect(() => {
         foods()
@@ -46,6 +47,9 @@ function ProductsData({ selectedItem }) {
 
     //Funcion para seleccionar y agregar productos
     const handleProductClick = (product) => {
+        itemRef.current = itemRef.current + 1;
+        //alert('Aqui esta' + itemRef.current);
+
         // Generar una identificación única para el producto seleccionado   --- se utiliza para obtener la marca de tiempo actual en milisegundos
         const selectedId = `${product.id}_${Date.now()}`;
         // Crear un nuevo objeto para el producto seleccionado con la identificación única
@@ -72,33 +76,34 @@ function ProductsData({ selectedItem }) {
             filteredProducts = productsData.filter(product => product.type === 'Almuerzo');
         }
 
-        return filteredProducts.map(product => (
-            <div className='' key={product.id}>
-                <button
-                    onClick={() => handleProductClick(product)}
-                    className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
-                    <p className=''>{product.name}</p>
-                    <p className=''>$ {product.price}</p>
-                </button>
+        return (
+            <div className='grid grid-cols-2 gap-2s'>
+                {filteredProducts.map(product => (
+                    <div className='' key={product.id}>
+                        <button
+                            onClick={() => handleProductClick(product)}
+                            className='border-[#A1D2B5] border-[3px] rounded-[30px] w-[180px] h-[100px] justify-center items-center my-2 mx-4 font-judson text-2xl shadow-lg'
+                        >
+                            <p className='px-2'>{product.name}</p>
+                            <p className='px-2'>$ {product.price}</p>
+                        </button>
+                    </div>
+                ))}
             </div>
-        ));
+        );
     }
 
     return (
-        <div className='grid grid-cols-6 w-full h-full'>
+        <div className='grid grid-cols-2 gap-3 mt-6'>
             {/* Section con la data de productos */}
-            <section className='col-span-3'>
-                <div className='grid grid-cols-2 gap-2 row-span-1 max-w-[50%]'>
-                    <aside className='row-span-1 col-span-2'>
-                        {FilterProducts()}
-                    </aside>
-                </div>
+            <section className='col-span-1'>
+                {FilterProducts()}
             </section>
 
             {/* Div con la calculadora */}
-            <div className='col-span-3 font-judson text-2xl border-4 border-[#389393] bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col'>
+            <div className='col-span-1 font-judson text-2xl border-4 border-[#389393] bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col'>
                 <h1 className='text-center my-2 text-3xl'>Resumen de pedido</h1>
-                <div className='col-span-2 row-span-2 p-1 flex-1' style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                <div className='col-span-2 row-span-2 p-1 flex-1' style={{ minHeight: '40vh', maxHeight: '50vh', overflowY: 'auto' }}>
                     <ul className="list-none">
                         {nameFood.length > 10 && (
                             <p className='text-center text-gray-500 mt-1'>
@@ -106,7 +111,8 @@ function ProductsData({ selectedItem }) {
                             </p>
                         )}
                         {nameFood.map((product) => (
-                            <li key={`selected_${product.selectedId}`} className='flex justify-between items-center m-2'>
+                            <li key={`selected_${product.selectedId}`}
+                                className='flex justify-between items-center m-2 border-b-2 border-gray-400'>
                                 <span>{product.name}</span>
                                 <div className='flex items-center'>
                                     <span className='mr-2'>${product.price}</span>
