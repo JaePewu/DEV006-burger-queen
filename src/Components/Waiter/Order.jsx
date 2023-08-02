@@ -16,11 +16,11 @@ function Orders() {
                 </div>
             </header>
             <nav>
-                <NavPrincipal/>
+                <NavPrincipal />
             </nav>
 
             <footer className='flex justify-center'>
-                <BtnSendOrder/>
+                <BtnSendOrder />
             </footer>
 
         </>
@@ -29,9 +29,10 @@ function Orders() {
 
 //Preguntar por npm install prop-types para buena practica y asi espeficar el tipo de dato.
 // eslint-disable-next-line react/prop-types
-function ProductsData( {selectedItem} ) {
+function ProductsData({ selectedItem }) {
     const [productsData, setProductsData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [nameFood, setNameFood] = useState([]);
 
     useEffect(() => {
         foods()
@@ -43,8 +44,14 @@ function ProductsData( {selectedItem} ) {
             });
     }, []);
 
-    const handleProductClick = (price) => {
-        setTotalPrice(totalPrice + price);
+    const handleProductClick = (product) => {
+        // Generar una identificación única para el producto seleccionado   --- se utiliza para obtener la marca de tiempo actual en milisegundos
+        const selectedId = `${product.id}_${Date.now()}`;
+        // Crear un nuevo objeto para el producto seleccionado con la identificación única
+        const selectedProduct = { ...product, selectedId };
+
+        setNameFood([...nameFood, selectedProduct]);
+        setTotalPrice(totalPrice + product.price);
     }
 
     function FilterProducts() {
@@ -59,22 +66,37 @@ function ProductsData( {selectedItem} ) {
 
         return filteredProducts.map(product => (
             <div className='' key={product.id}>
-                <button 
-                onClick={() => handleProductClick(product.price)}
-                className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
-                <p className=''>{product.name}</p>
-                <p className=''>$ {product.price}</p>
+                <button
+                    onClick={() => handleProductClick(product)}
+                    className='border-[#A1D2B5] border-[3px] rounded-[50px] w-[250px] h-[130px] justify-center my-3 mx-5 font-judson text-2xl p-2 shadow-lg'>
+                    <p className=''>{product.name}</p>
+                    <p className=''>$ {product.price}</p>
                 </button>
             </div>
         ));
     }
 
     return (
-        <div>
-        <aside>
-            {FilterProducts()}
-        </aside>
-        <aside> Total: ${totalPrice} </aside>
+        <div className=''>
+            <aside>
+                {FilterProducts()}
+            </aside>
+
+            <div className='font-judson text-2xl border-2 border-rose-500 bg-[#FFE1CD] rounded-[50px] mx-5'>
+                <div >
+                    <h1 className='text-center my-2'
+                    >Resumen de pedido</h1>
+                    {nameFood.map((product) => (
+                        <li 
+                         key={`selected_${product.selectedId}`}> {/* Usar la identificación única como clave */}
+                            {product.name} - ${product.price}
+                        </li>
+                    ))}
+                </div>
+
+                <aside className='text-center my-2'
+                > Total: ${totalPrice} </aside>
+            </div>
         </div>
     );
 }
