@@ -44,6 +44,7 @@ function ProductsData({ selectedItem }) {
             });
     }, []);
 
+    //Funcion para seleccionar y agregar productos
     const handleProductClick = (product) => {
         // Generar una identificación única para el producto seleccionado   --- se utiliza para obtener la marca de tiempo actual en milisegundos
         const selectedId = `${product.id}_${Date.now()}`;
@@ -52,7 +53,14 @@ function ProductsData({ selectedItem }) {
 
         setNameFood([...nameFood, selectedProduct]);
         setTotalPrice(totalPrice + product.price);
-    }
+    };
+
+    //Funcion para eliminar productos
+    const handleDeleteProduct = (selectedId, price) => {
+        const updatedNameFood = nameFood.filter((product) => product.selectedId !== selectedId);
+        setNameFood(updatedNameFood);
+        setTotalPrice(totalPrice - price);
+    };
 
     function FilterProducts() {
         // Filtrar productos según el valor de selectedItem
@@ -78,7 +86,7 @@ function ProductsData({ selectedItem }) {
 
     return (
         <div className='grid grid-cols-5 w-full h-full'>
-            {/* Section con el aside */}
+            {/* Section con la data de productos */}
             <section className='col-span-2'>
                 <div className='grid grid-cols-4 gap-2 row-span-1'>
                     <aside className='row-span-1 col-span-2'>
@@ -86,19 +94,42 @@ function ProductsData({ selectedItem }) {
                     </aside>
                 </div>
             </section>
-    
-            {/* Div con el h1 y el li */}
-            <div className='col-span-3 font-judson text-2xl border-2 border-rose-500 bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col '>
-                <div className='col-span-2 row-span-2 p-2 flex-1 ' style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                    <h1 className='text-center my-2'>Resumen de pedido</h1>
-                    {nameFood.map((product) => (
-                        <li key={`selected_${product.selectedId}`}>
-                            {/* Usar la identificación única como clave */}
-                            {product.name} - ${product.price}
-                        </li>
-                    ))}
+
+            {/* Div con la calculadora */}
+            <div className='col-span-3 font-judson text-2xl border-4 border-[#389393] bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col'>
+                <h1 className='text-center my-2 text-3xl'>Resumen de pedido</h1>
+                <div className='col-span-2 row-span-2 p-1 flex-1' style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <ul className="list-none">
+                        {nameFood.length > 10 && (
+                            <p className='text-center text-gray-500 mt-1'>
+                                ***********
+                            </p>
+                        )}
+                        {nameFood.map((product) => (
+                            <li key={`selected_${product.selectedId}`} className='flex justify-between items-center m-2'>
+                                <span>{product.name}</span>
+                                <div className='flex items-center'>
+                                    <span className='mr-2'>${product.price}</span>
+                                    <img
+                                        src="/Delete.png"
+                                        alt="Borrar"
+                                        className='cursor-pointer h-11'
+                                        onClick={() => handleDeleteProduct(product.selectedId, product.price)}
+                                    />
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                    {nameFood.length > 10 && (
+                        <p className='text-center text-gray-500 mt-2'>
+                            (Fin de pedido)
+                        </p>
+                    )}
                 </div>
-                <aside className='text-center my-2'>Total: ${totalPrice}</aside>
+                <aside className='text-center my-2 flex justify-center'>
+                    <p className='text-2xl'>Total:</p>
+                    <p className='bg-white border-[5px] border-rose-500 rounded-[10px] text-2xl w-1/4 ml-2'>${totalPrice}</p>
+                </aside>
             </div>
         </div>
     );
