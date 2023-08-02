@@ -85,10 +85,10 @@ function ProductsData({ selectedItem }) {
     }
 
     return (
-        <div className='grid grid-cols-5 w-full h-full'>
+        <div className='grid grid-cols-6 w-full h-full'>
             {/* Section con la data de productos */}
-            <section className='col-span-2'>
-                <div className='grid grid-cols-4 gap-2 row-span-1'>
+            <section className='col-span-3'>
+                <div className='grid grid-cols-2 gap-2 row-span-1 max-w-[50%]'>
                     <aside className='row-span-1 col-span-2'>
                         {FilterProducts()}
                     </aside>
