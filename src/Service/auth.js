@@ -4,6 +4,7 @@ function loginAPI(options, setError) {
     //El parámetro 'options' es un objeto que contiene los datos necesarios para realizar la petición POST
     //setError funcion que maneja los errores en caso de problemas en el inicio de sesión
     let token = ""; // se crea esta variable para almacenar el token
+    let workersName = "";
 
     return (
         axios
@@ -22,9 +23,18 @@ function loginAPI(options, setError) {
             .then((data) => {
                 // si la respuesta contiene datos y son validos va a capturar el token
                 token = data.accessToken; // si la peticion es exitosa el token se guarda aquí
-                localStorage.setItem("token", token); // y se guarda en el almacenamiento local
+                localStorage.setItem("token", token); // y se guarda en el almacenamiento 
                 console.log(token); //Borrar cuando se termine el proyecto
-                return token;
+                return data; //data
+            })
+            .then((data) => {
+                workersName = data.user.name;
+                localStorage.setItem("workers", workersName);
+                console.log(workersName);
+                return {
+                    token: token,
+                    workersName: workersName
+                };
             })
             .catch((error) => {
                 console.error(error);
