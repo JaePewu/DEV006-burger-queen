@@ -34,8 +34,9 @@ function Form() {
 
 
         const token = await loginAPI(options, setError);
-        localStorage.setItem("token", token);
-        if (token) {
+        const workersName = await loginAPI(options, setError); 
+        
+        if (token && workersName) {
             navigate("/pedidos");
         }
     };
