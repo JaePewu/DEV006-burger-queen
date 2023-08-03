@@ -1,26 +1,24 @@
-import { useState } from 'react'
-import Form from './Components/form'
+//import { useState } from 'react'
 
+import { BrowserRouter, Routes ,Route } from "react-router-dom";
+import { Login } from './Components/Login/LoginApp'
+import { BQueen } from './Components/Wellcome/wellcomeApp'
+import { Orders } from './Components/Waiter/Order';
 
 function App() {
 
   return (
     <>
-      <div className='flex w-full h-screen'>
-        <div className='w-full flex items-center justify-center lg:w-1/2'>
-        <Form></Form>
-        </div>
-
-        <div className='hidden lg:flex w-1/2 h-full items-center justify-center bg-gray-200'>
-          <div className='animate-bounce'>Logo</div>
-
-        </div>
-      </div>
-      
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<BQueen/>} />
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/pedidos" element={<Orders/>} />
+        </Routes>
+    </BrowserRouter>
     </>
   )
 }
-
 
 
 
