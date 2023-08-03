@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder } from './OrderComponents'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { foods } from '../../Service/orders';
 
 function Orders() {
@@ -33,7 +33,7 @@ function ProductsData({ selectedItem }) {
     const [productsData, setProductsData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [nameFood, setNameFood] = useState([]);
-    let itemRef = useRef(0);
+
 
     useEffect(() => {
         foods()
@@ -47,8 +47,6 @@ function ProductsData({ selectedItem }) {
 
     //Funcion para seleccionar y agregar productos
     const handleProductClick = (product) => {
-        itemRef.current = itemRef.current + 1;
-        //alert('Aqui esta' + itemRef.current);
 
         // Generar una identificación única para el producto seleccionado   --- se utiliza para obtener la marca de tiempo actual en milisegundos
         const selectedId = `${product.id}_${Date.now()}`;
