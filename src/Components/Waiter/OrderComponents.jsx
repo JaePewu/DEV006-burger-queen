@@ -18,27 +18,6 @@ function ImgLogo() {
 }
 
 function InfoClient() {
-
-    const [workersName, setWorkersName] = useState('');
-    useEffect(() => {
-        const loginOptions = {
-            body: {
-                email: 'email',
-                password: 'password',
-            },
-        };
-
-        const fetchWorkersName = async () => {
-            try {
-                const data = await loginAPI(loginOptions);
-                setWorkersName(data.workersName);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchWorkersName();
-    }, []);
     return (
         <>
 
