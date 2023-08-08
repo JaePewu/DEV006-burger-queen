@@ -2,19 +2,30 @@
 import { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder } from './OrderComponents'
 import { useState, useEffect, useRef } from 'react';
 import { foods } from '../../Service/orders';
+import { LogOut } from '../LogOut/LogOutComponents';
 
 function Orders() {
     return (
         <>
-            <header className='grid grid-cols-4 gap-2 mx-5 my-3'>
+
+            <header className='grid grid-cols-4 gap-2 mx-5 my-3 relative'>
+
                 <div className=' col-span-2 space-y-2'>
                     <InfoClient />
                 </div>
 
-                <div className='col-span-2'>
+                <div className='col-span-2 relative'>
+
+                    <div className='float-right'>
+                   <LogOut/>
+                   </div>
+
+                    <div className='mt-[30px] absolute z-0'>
                     <ImgLogo />
+                    </div>
                 </div>
             </header>
+
             <nav>
                 <NavPrincipal />
             </nav>

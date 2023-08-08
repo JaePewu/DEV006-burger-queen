@@ -10,8 +10,9 @@ import LogoBQueen from '/3.png';
 function ImgLogo() {
     return (
         <>
-            <div className='h-full w-full'>
-                <img src={LogoBQueen} alt="Logo burger queen" />
+            <div>
+                <img className='flex justify-center h-55 w-full '
+                src={LogoBQueen} alt="Logo burger queen" />
             </div>
         </>
     )
@@ -19,7 +20,7 @@ function ImgLogo() {
 
 function InfoClient() {
 
-    /*const [workersName, setWorkersName] = useState('');
+    const [workersName, setWorkersName] = useState('');
     useEffect(() => {
         const loginOptions = {
             body: {
@@ -38,7 +39,7 @@ function InfoClient() {
         };
 
         fetchWorkersName();
-    }, []);*/
+    }, []);
     return (
         <>
 
