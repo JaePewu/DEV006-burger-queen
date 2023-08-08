@@ -86,7 +86,7 @@ function ProductsData({ selectedItem }) {
         }
 
         return (
-            <div className='grid grid-cols-2 gap-2s'>
+            <div className='grid grid-cols-2 gap-2 lg:mx-20'>
                 {filteredProducts.map(product => (
                     <div className='' key={product.id}>
                         <button
@@ -110,7 +110,7 @@ function ProductsData({ selectedItem }) {
             </section>
 
             {/* Div con la calculadora */}
-            <div className='col-span-1 font-judson text-2xl border-4 border-[#389393] bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col'>
+            <div className='col-span-1 font-judson text-2xl border-4 border-[#389393] bg-[#FFE1CD] rounded-[50px] mx-5 flex flex-col lg:mr-20'>
                 <h1 className='text-center my-2 text-3xl'>Resumen de pedido</h1>
                 <div className='col-span-2 row-span-2 p-1 flex-1' style={{ minHeight: '40vh', maxHeight: '50vh', overflowY: 'auto' }}>
                     <ul className="list-none">
