@@ -1,20 +1,31 @@
 /* eslint-disable no-unused-vars */
 import { ImgLogo, InfoClient, NavPrincipal, BtnSendOrder } from './OrderComponents'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { foods } from '../../Service/orders';
+import { LogOut } from '../LogOut/LogOutComponents';
 
 function Orders() {
     return (
         <>
-            <header className='grid grid-cols-4 gap-2 mx-5 my-3'>
+
+            <header className='grid grid-cols-4 gap-2 mx-5 my-3 relative'>
+
                 <div className=' col-span-2 space-y-2'>
                     <InfoClient />
                 </div>
 
-                <div className='col-span-2'>
+                <div className='col-span-2 relative'>
+
+                    <div className='float-right'>
+                   <LogOut/>
+                   </div>
+
+                    <div className='mt-[30px] absolute z-0'>
                     <ImgLogo />
+                    </div>
                 </div>
             </header>
+
             <nav>
                 <NavPrincipal />
             </nav>
@@ -33,7 +44,7 @@ function ProductsData({ selectedItem }) {
     const [productsData, setProductsData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [nameFood, setNameFood] = useState([]);
-    let itemRef = useRef(0);
+
 
     useEffect(() => {
         foods()
@@ -47,8 +58,6 @@ function ProductsData({ selectedItem }) {
 
     //Funcion para seleccionar y agregar productos
     const handleProductClick = (product) => {
-        itemRef.current = itemRef.current + 1;
-        //alert('Aqui esta' + itemRef.current);
 
         // Generar una identificación única para el producto seleccionado   --- se utiliza para obtener la marca de tiempo actual en milisegundos
         const selectedId = `${product.id}_${Date.now()}`;

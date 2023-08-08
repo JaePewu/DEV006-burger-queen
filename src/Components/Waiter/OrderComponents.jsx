@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProductsData } from './Order.jsx';
+import { loginAPI } from '../../Service/auth.js';
 import LogoBQueen from '/3.png';
 
 
@@ -9,22 +10,42 @@ import LogoBQueen from '/3.png';
 function ImgLogo() {
     return (
         <>
-            <div className='h-full w-full'>
-                <img src={LogoBQueen} alt="Logo burger queen" />
+            <div>
+                <img className='flex justify-center h-55 w-full '
+                src={LogoBQueen} alt="Logo burger queen" />
             </div>
         </>
     )
 }
 
 function InfoClient() {
+
+    const [workersName, setWorkersName] = useState('');
+    useEffect(() => {
+        const loginOptions = {
+            body: {
+                email: 'email',
+                password: 'password',
+            },
+        };
+
+        const fetchWorkersName = async () => {
+            try {
+                const data = await loginAPI(loginOptions);
+                setWorkersName(data.workersName);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchWorkersName();
+    }, []);
     return (
         <>
 
             <div className=' font-judson text-2xl border-b-2 border-b-[#F67575] w-[90%]'>
                 <label htmlFor="">Garzón:</label>
-                <input type="text"
-                    placeholder='Ingrese Garzón'
-                    className='font-judson ml-2 mt-3' />
+                <p className='font-judson ml-2 mt-3'> {workersName || "S.N."} </p>
             </div>
 
             <div>
@@ -87,20 +108,20 @@ function NavPrincipal() {
 
             {/* Mostrar el div cuando showDiv es verdadero */}
             {showDiv && (
-    <div className='m-auto'>
-        {/* Aquí se incluye el componente ProductsData */}
-        <ProductsData selectedItem={selectedItem}/>
-    </div>
-)}
+                <div className='m-auto'>
+                    {/* Aquí se incluye el componente ProductsData */}
+                    <ProductsData selectedItem={selectedItem} />
+                </div>
+            )}
         </>
     );
 }
 
-function BtnSendOrder(){
-    return(
+function BtnSendOrder() {
+    return (
         <div className='fixed bottom-10 w-2/3'>
-        <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster shadow-xl '
-        type='submit'>Enviar Pedido</button>
+            <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster shadow-xl '
+                type='submit'>Enviar Pedido</button>
         </div>
     )
 }
