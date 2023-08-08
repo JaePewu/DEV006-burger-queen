@@ -12,42 +12,23 @@ function ImgLogo() {
         <>
             <div className='lg:mt-[-35px] w-[80%]'>
                 <img className='flex justify-center h-55 w-full '
-                src={LogoBQueen} alt="Logo burger queen" />
+                    src={LogoBQueen} alt="Logo burger queen" />
             </div>
         </>
     )
 }
 
 function InfoClient() {
+    const workersName = localStorage.getItem("workers");
 
-    /*const [workersName, setWorkersName] = useState('');
-    useEffect(() => {
-        const loginOptions = {
-            body: {
-                email: 'email',
-                password: 'password',
-            },
-        };
-
-        const fetchWorkersName = async () => {
-            try {
-                const data = await loginAPI(loginOptions);
-                setWorkersName(data.workersName);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchWorkersName();
-    }, []);*/
     return (
         <>
 
             <div className=' font-judson text-2xl border-b-2 border-b-[#F67575] w-[90%] lg:w-[75%]'>
-                <label htmlFor="">Garzón:</label>
-                <p className='font-judson ml-2 mt-3'> </p>
+                <label htmlFor="">Mesero:</label>
+                <p className='font-judson ml-2 mt-3'> {workersName} </p>
             </div>
-                      {/* {workersName || "S.N."} */}
+
             <div>
                 <input
                     className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%]'
@@ -76,7 +57,7 @@ function NavPrincipal() {
 
     return (
         <>
-            <nav className='flex justify-center my-6'>
+            <nav className='flex justify-center my-6 lg:justify-start'>
                 <ul className='lg:flex'>
                     <li>
                         <a
@@ -102,7 +83,7 @@ function NavPrincipal() {
                             onClick={() => handleClick('pedido')}>
                             Pedido Listos
                         </a>
-                        
+
                     </li>
                 </ul>
             </nav>
