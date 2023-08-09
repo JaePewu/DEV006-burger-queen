@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ImgLogo } from '../Waiter/OrderComponents';
 import { LogOut } from '../LogOut/LogOutComponents';
+import { ordersKitchen } from '../../Service/kitchen';
 
 
 function KitchenView() {
@@ -26,6 +27,18 @@ function KitchenView() {
 
 
 function NavKitchen() {
+    const [clientOrder, setClientOrder] = useState([]);
+
+    useEffect(() => {
+        ordersKitchen()
+            .then(orders => {
+                setOrdersDetails(orders);
+            })
+            .catch(error => {
+                console.error('Error al obtener órdenes:', error);
+            });
+    }, []);
+    
     return (
         <>
             <nav className=' my-10 mx-10 h-full border-b-4 border-[#F5A25D]'>
@@ -45,8 +58,9 @@ function NavKitchen() {
 
 
             <main className='flex border-4 border-[#F5A25D] bg-[#A1D2B5] rounded-[50px] mx-5 h-1/5 p-10'>
-
-            </main></>
+               <ordersKitchen/>
+            </main>
+            </>
     )
 }
 
