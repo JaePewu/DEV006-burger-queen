@@ -86,7 +86,7 @@ function ProductsData({ selectedItem }) {
         }
 
         return (
-            <div className='grid grid-cols-2 gap-2 lg:mx-20'>
+            <div className='grid grid-cols-2 gap-2 lg:mx-10'>
                 {filteredProducts.map(product => (
                     <div className='' key={product.id}>
                         <button

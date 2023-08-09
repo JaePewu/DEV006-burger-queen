@@ -26,14 +26,14 @@ function InfoClient() {
     return (
         <>
 
-            <div className=' font-judson text-2xl border-b-2 border-b-[#F67575] w-[90%] lg:w-[75%]'>
+            <div className=' font-judson text-2xl border-b-2 border-b-[#F67575] w-[90%] lg:w-[75%] lg:ml-16 '>
                 <label htmlFor="">Mesero:</label>
                 <p className='font-judson ml-2 mt-3'> {workersName} </p>
             </div>
 
             <div>
                 <input
-                    className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%]'
+                    className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%] lg:ml-16'
                     placeholder='Ingrese cliente'
                     required
                     type='text'
@@ -43,7 +43,7 @@ function InfoClient() {
             </div>
             <div>
                 <input
-                    className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%]'
+                    className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%] lg:ml-16'
                     placeholder='Ingrese n° Mesa'
                     required
                     type='text'
@@ -66,7 +66,7 @@ function NavPrincipal() {
 
     return (
         <>
-            <nav className='flex justify-center my-6 lg:justify-start'>
+            <nav className='flex justify-center my-6 lg:justify-start lg:ml-20'>
                 <ul className='lg:flex'>
                     <li>
                         <a
