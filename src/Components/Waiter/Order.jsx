@@ -16,12 +16,12 @@ function Orders() {
 
                 <div className='col-span-2 relative'>
 
-                    <div className='float-right'>
-                   <LogOut/>
-                   </div>
+                    <div className='float-right z-10'>
+                        <LogOut />
+                    </div>
 
                     <div className='mt-[30px] absolute z-0'>
-                    <ImgLogo />
+                        <ImgLogo />
                     </div>
                 </div>
             </header>

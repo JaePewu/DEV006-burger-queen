@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ProductsData } from './Order.jsx';
 import { loginAPI } from '../../Service/auth.js';
 import LogoBQueen from '/3.png';
-
+import { AlertBtnSendOrder } from './Alert.jsx';
 
 
 function ImgLogo() {
@@ -20,6 +20,8 @@ function ImgLogo() {
 
 function InfoClient() {
     const workersName = localStorage.getItem("workers");
+    const [cliente, setCliente] = useState('');
+    const [mesa, setMesa] = useState('');
 
     return (
         <>
@@ -33,14 +35,20 @@ function InfoClient() {
                 <input
                     className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%]'
                     placeholder='Ingrese cliente'
+                    required
                     type='text'
+                    value={cliente}
+                    onChange={(e) => setCliente(e.target.value)}
                 />
             </div>
             <div>
                 <input
                     className='focus:outline-none focus:border-rose-500 w-full border-2 text-2xl border-[#F5A25D] rounded-full p-4 mt-1 h-1/2 font-judson drop-shadow-md bg-[#FFE1CD] placeholder-gray-500 lg:w-[75%]'
                     placeholder='Ingrese n° Mesa'
+                    required
                     type='text'
+                    value={mesa}
+                    onChange={(e) => setMesa(e.target.value)}
                 />
             </div>
         </>
@@ -50,6 +58,7 @@ function InfoClient() {
 function NavPrincipal() {
     const [selectedItem, setSelectedItem] = useState('desayuno');
     const [showDiv, setShowDiv] = useState(true);
+
 
     const handleClick = (item) => {
         setSelectedItem(item);
@@ -95,15 +104,25 @@ function NavPrincipal() {
                     <ProductsData selectedItem={selectedItem} />
                 </div>
             )}
+
+
         </>
     );
 }
 
 function BtnSendOrder() {
+    const handleOrderClick = () => {
+
+        AlertBtnSendOrder();
+
+    }
+
     return (
         <div className=' mt-32 w-2/3 justify-center'>
             <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out text-5xl bg-cyan-700 text-white w-full p-4 h-20 rounded-full font-lobster shadow-xl lg:mb-20'
-                type='submit'>Enviar Pedido</button>
+                type='submit'
+                onClick={handleOrderClick}
+            >Enviar Pedido</button>
         </div>
     )
 }
